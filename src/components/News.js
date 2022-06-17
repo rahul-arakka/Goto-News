@@ -14,33 +14,39 @@ export default class News extends Component {
 
   async componentDidMount() {
     let url =
-      `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}`;
+      `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedDate = await data.json();
     console.log(parsedDate);
-    this.setState({ articles: parsedDate.articles });
+    this.setState({
+      articles: parsedDate.articles,
+      page:this.state.page,
+      totalResults: parsedDate.totalResults
+     });
   }
    prevHandle = async()=>{
     let url =
-    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page - 1}`;
+    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedDate = await data.json();
     console.log(parsedDate);
     this.setState({ 
       articles: parsedDate.articles,
-      page: this.state.page -1
+      page: this.state.page -1,
+      totalResults: parsedDate.totalResults
    });
     console.log('prev clicked');
   }
   nextHandle = async ()=>{
     let url =
-    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page + 1}`;
+    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedDate = await data.json();
     console.log(parsedDate);
     this.setState({ 
       articles: parsedDate.articles,
-      page: this.state.page+1
+      page: this.state.page+1,
+      totalResults: parsedDate.totalResults
    });
     console.log('next clicked');
   }
@@ -68,7 +74,7 @@ export default class News extends Component {
             <div className="d-flex justify-content-between">
 
           <button type="button" className="btn btn-dark" onClick={this.prevHandle} disabled={this.state.page<=1}> &larr; Previous</button>
-          <button type="button" className="btn btn-dark" onClick={this.nextHandle} >Next &rarr;</button>
+          <button type="button" className="btn btn-dark" onClick={this.nextHandle} disabled={this.state.page >= Math.ceil(this.state.totalResults/this.props.pageSize)}>Next &rarr;</button>
 
             </div>
         </div>
