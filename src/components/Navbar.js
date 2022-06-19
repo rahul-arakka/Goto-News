@@ -14,15 +14,11 @@ export default class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/politics">
-                    Politics
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/general">
                     General
                   </Link>
                 </li>
+               
                 <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/sports">
                     Sports
