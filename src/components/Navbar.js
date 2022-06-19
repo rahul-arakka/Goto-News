@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 export default class Navbar extends Component {
   render() {
@@ -6,33 +7,42 @@ export default class Navbar extends Component {
       <div>
         <nav className="navbar navbar-dark navbar-expand bg-dark">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              Navbar
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+            <Link className="navbar-brand" rel="noreferrer" to="/">
+              Goto News
+            </Link>
+            
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Home
-                  </a>
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/politics">
+                    Politics
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Features
-                  </a>
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/general">
+                    General
+                  </Link>
                 </li>
-                
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/sports">
+                    Sports
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/science">
+                    Science
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/technology">
+                    Technology
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" rel="noreferrer" to="/health">
+                    Health
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default class News extends Component {
 
   async componentDidMount() {
     let url =
-      `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}&pageSize=${this.props.pageSize}&category=${this.props.category}`;
       this.setState({loading: true})
       let data = await fetch(url);
       let parsedDate = await data.json();
@@ -29,7 +29,7 @@ export default class News extends Component {
   }
    prevHandle = async()=>{
     let url =
-    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}&pageSize=${this.props.pageSize}&category=${this.props.category}`;
     this.setState({loading: true})
     let data = await fetch(url);
     let parsedDate = await data.json();
@@ -44,7 +44,7 @@ export default class News extends Component {
   }
   nextHandle = async ()=>{
     let url =
-    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+    `https://newsapi.org/v2/top-headlines?country=in&apiKey=7442b35d87d04e2bae55976a6dd97c66&page=${this.state.page}&pageSize=${this.props.pageSize}&category=${this.props.category}`;
     this.setState({loading: true})
     let data = await fetch(url);
     let parsedDate = await data.json();
@@ -67,8 +67,8 @@ export default class News extends Component {
           <div className="row my-3">
             {!this.state.loading && this.state.articles.map((element) => {
               return (
-                <div className="col-md-3 my-3" key={element.url}>
-                  <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} url={element.url}/>
+                <div className="col-md-4 my-3" key={element.url}>
+                  <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} url={element.url} author={element.author?element.author:'Unknown'} date={element.publishedAt} source={element.source.name}/>
                 </div>
               );
             })}
