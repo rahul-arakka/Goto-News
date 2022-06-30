@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default class App extends Component {
-  apikey = process.env.ApiKeyName; 
-  render() {
+const App = ()=> {
+  const apikey = process.env.ApiKeyName; 
+  
     return (
       <BrowserRouter>
         <Navbar />
@@ -14,14 +14,14 @@ export default class App extends Component {
           <Route
             path="/"
             element={
-              <News apikey={this.apikey} key="gotonews" pageSize={8} category="" />
+              <News apikey={apikey} key="gotonews" pageSize={8} category="" />
             }
           />
           <Route
             path="/general"
             element={
               <News
-                apikey={this.apikey}
+                apikey={apikey}
                 key="general"
                 pageSize={8}
                 category="general"
@@ -32,7 +32,7 @@ export default class App extends Component {
             path="/sports"
             element={
               <News
-                apikey={this.apikey}
+                apikey={apikey}
                 key="sports"
                 pageSize={8}
                 category="sports"
@@ -43,17 +43,18 @@ export default class App extends Component {
             path="/science"
             element={
               <News
-                apikey={this.apikey}
+                apikey={apikey}
                 key="science"
                 pageSize={8}
                 category="science"
               />
             }
           />
-          <Route path="/technology" element={ <News apikey={this.apikey} key="technology" pageSize={8} category="technology" />}/>
-          <Route path="/health"  element={ <News  apikey={this.apikey} key="health"  pageSize={8} category="health" /> } />
+          <Route path="/technology" element={ <News apikey={apikey} key="technology" pageSize={8} category="technology" />}/>
+          <Route path="/health"  element={ <News  apikey={apikey} key="health"  pageSize={8} category="health" /> } />
         </Routes>
       </BrowserRouter>
     );
-  }
+  
 }
+export default App;
