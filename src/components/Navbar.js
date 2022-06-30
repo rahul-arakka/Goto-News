@@ -6,7 +6,7 @@ const Navbar = ()=> {
   
     return (
       <div>
-        <nav className="navbar navbar-dark navbar-expand bg-dark">
+        <nav className="navbar fixed-top navbar-dark navbar-expand bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand" rel="noreferrer" to="/">
               Goto News
